@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal | Ingresar Mensaje</title>
+    <!-- Incluir Tailwind CSS para estilos modernos y responsivos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilo base de la fuente */
+        body { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <!-- Contenedor Principal (Tarjeta) -->
+    <div class="w-full max-w-lg bg-white p-8 rounded-xl shadow-2xl space-y-8">
+        <h1 class="text-3xl font-extrabold text-gray-900 text-center border-b pb-4">
+            Página 1: Ingreso de Datos (BBDD)
+        </h1>
+
+        <!-- Formulario para ingresar datos -->
+        <form method="POST" action="{{ url_for('index') }}" class="space-y-6">
+            <div>
+                <label for="content" class="block text-sm font-medium text-gray-700 mb-2">
+                    Escribe un mensaje para guardar en PostgreSQL:
+                </label>
+                <textarea id="content" name="content" rows="4" required 
+                          class="w-full p-3 border border-gray-300 rounded-lg shadow-inner focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
+                          placeholder="Tu mensaje aquí..."></textarea>
+            </div>
+            
+            <button type="submit" 
+                    class="w-full bg-indigo-600 text-white font-semibold py-3 px-4 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-200 ease-in-out transform hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                💾 Guardar Mensaje en la BBDD
+            </button>
+        </form>
+
+        <!-- Separador -->
+        <div class="relative">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-gray-200"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-white px-2 text-sm text-gray-500">
+                    Navegación
+                </span>
+            </div>
+        </div>
+
+        <!-- Botón para ir a la segunda página -->
+        <a href="{{ url_for('results') }}" class="block">
+            <button class="w-full bg-green-500 text-white font-semibold py-3 px-4 rounded-lg shadow-lg hover:bg-green-600 transition duration-200 ease-in-out transform hover:scale-105">
+                👀 Ir a Ver Resultados (Página 2)
+            </button>
+        </a>
+
+    </div>
+</body>
+</html>

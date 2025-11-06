@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  web:
+    # Construye la imagen usando el Dockerfile en el directorio './web'
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    # Mapea el puerto 5000 del contenedor al puerto 5000 de tu máquina local
+    ports:
+      - "5000:5000"
+    # Configura las variables de entorno para la conexión de Flask a Postgres
+    environment:
+      - DB_NAME=flask_db
+      - DB_USER=flask_user
+      - DB_PASS=supersecret
+      - DB_HOST=db # 'db' es el nombre del servicio de la BBDD en Docker Compose
+    # Asegura que la BBDD esté lista antes de intentar iniciar la web (ayuda en el arranque)
+    depends_on:
+      - db
+
+  db:
+    # Utiliza la imagen oficial de PostgreSQL
+    image: postgres:14-alpine
+    # Reinicia si falla
+    restart: always
+    # Configura las variables de entorno de PostgreSQL
+    environment:
+      POSTGRES_DB: flask_db
+      POSTGRES_USER: flask_user
+      POSTGRES_PASSWORD: supersecret
+    # Persistencia de datos: guarda los datos de la BBDD en un volumen de Docker
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  # Define el volumen para la persistencia
+  postgres_data:
