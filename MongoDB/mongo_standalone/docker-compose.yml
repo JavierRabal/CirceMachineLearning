@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_container
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      # Volumen para persistir los datos de la DB
+      - mongo_data:/data/db
+      # Volumen para acceder a la carpeta local 'db' y al dump file
+      - ./db:/app_data/db_dump:ro 
+    environment:
+      # Variables de entorno para configurar el usuario y contraseña raíz
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+volumes:
+  mongo_data:
+    driver: local

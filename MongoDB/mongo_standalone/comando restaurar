@@ -1,0 +1,7 @@
+gzip -dc /app_data/db_dump/mongo-bikes.dump.gz | mongorestore \
+  --host localhost \
+  --authenticationDatabase admin \
+  --username admin \
+  --password password \
+  --archive
+
