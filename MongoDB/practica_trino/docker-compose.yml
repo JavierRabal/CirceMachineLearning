@@ -1,0 +1,36 @@
+services:
+  # 1. Servicio Trino (Motor de consultas)
+  trino:
+    image: trinodb/trino:latest
+    container_name: trino_server
+    ports:
+      - "8080:8080"
+    volumes:
+      # Configuración de catálogos
+      - ./etc/catalog:/etc/trino/catalog
+    networks:
+      - red_federada
+
+  # 2. Servicio Postgres (Base de datos Geoespacial)
+  postgres:
+    image: postgis/postgis:latest
+    container_name: postgres_geo
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - red_federada
+
+# Definición de redes externas
+networks:
+  red_federada:
+    external: true
+
+# Definición del volumen persistente
+volumes:
+  pg_data:

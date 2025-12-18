@@ -1,0 +1,30 @@
+
+# Plaza del pilar
+INSERT INTO zonas_zaragoza (nombre, poligono) VALUES (
+    'Plaza del Pilar', 
+    ST_GeomFromText('POLYGON((-0.8810 41.6575, -0.8760 41.6575, -0.8760 41.6555, -0.8810 41.6555, -0.8810 41.6575))', 4326)
+);
+
+# Plaza de los sitios
+INSERT INTO zonas_zaragoza (nombre, poligono) VALUES (
+    'Plaza de los Sitios', 
+    ST_GeomFromText('POLYGON((-0.8815 41.6495, -0.8795 41.6495, -0.8795 41.6480, -0.8815 41.6480, -0.8815 41.6495))', 4326)
+);
+
+# Plaza Salamero
+INSERT INTO zonas_zaragoza (nombre, poligono) VALUES (
+    'Plaza Salamero', 
+    ST_GeomFromText('POLYGON((-0.8860 41.6515, -0.8840 41.6515, -0.8840 41.6505, -0.8860 41.6505, -0.8860 41.6515))', 4326)
+);
+
+# Campus San Francisco
+INSERT INTO zonas_zaragoza (nombre, poligono) VALUES (
+    'Campus San Francisco', 
+    ST_GeomFromText('POLYGON((-0.9020 41.6430, -0.8960 41.6430, -0.8960 41.6390, -0.9020 41.6390, -0.9020 41.6430))', 4326)
+);
+
+# Barrio de Torrero
+INSERT INTO zonas_zaragoza (nombre, poligono) VALUES (
+    'Barrio de Torrero', 
+    ST_GeomFromText('POLYGON((-0.8900 41.6350, -0.8800 41.6350, -0.8800 41.6300, -0.8900 41.6300, -0.8900 41.6350))', 4326)
+);

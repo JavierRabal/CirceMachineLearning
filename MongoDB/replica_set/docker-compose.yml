@@ -1,0 +1,36 @@
+
+services:
+  # --- Nodo Primario (NODO 1) ---
+  mongo1:
+    image: mongo:latest
+    container_name: mongo1
+    command: mongod --replSet rs0 --bind_ip 0.0.0.0
+    ports:
+      - 27027:27017
+    volumes:
+      - mongo1-data:/data/db
+
+  # --- Nodo Secundario (NODO 2) ---
+  mongo2:
+    image: mongo:latest
+    container_name: mongo2
+    command: mongod --replSet rs0 --bind_ip 0.0.0.0
+    ports:
+      - 27028:27017
+    volumes:
+      - mongo2-data:/data/db
+
+  # --- Nodo Secundario (NODO 3) ---
+  mongo3:
+    image: mongo:latest
+    container_name: mongo3
+    command: mongod --replSet rs0 --bind_ip 0.0.0.0
+    ports:
+      - 27029:27017
+    volumes:
+      - mongo3-data:/data/db
+
+volumes:
+  mongo1-data:
+  mongo2-data:
+  mongo3-data:
